@@ -15,9 +15,7 @@
   "dependencies": {
     "modern-normalize": "^2.0.0",
     "reset-css": "^5.0.2",
-    "sass": "^1.70.0",
     "vite-plugin-full-reload": "^1.1.0",
-    "vite-plugin-html-inject": "^1.0.4",
-    "vite-plugin-sass": "^0.1.0"
+    "vite-plugin-html-inject": "^1.0.4"
   }
 }
