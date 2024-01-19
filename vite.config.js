@@ -26,5 +26,6 @@ export default defineConfig(({ command }) => {
       outDir: '../dist',
     },
     plugins: [injectHTML(), FullReload(['./src/**/**.html'])],
+    base: '/clock-app/'
   };
 });
