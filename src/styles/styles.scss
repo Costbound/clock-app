@@ -1,5 +1,49 @@
 @import url('../../node_modules/reset-css/reset.css');
 @import url('../../node_modules/modern-normalize/modern-normalize.css');
-@import url('./common.scss');
+
+body {
+    font-family: 'Inter';
+    font-size: 15px;
+    color: #fff;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.section {
+    padding: 0 26px;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+
+.content-container {
+    margin: 0 auto;
+    min-width: 324px;
+
+    @media screen and (min-width: 768px) and (max-width: 1440px) {
+        min-width: 686px;
+        max-width: 980px;
+    }
+
+    @media screen and (min-width: 1440px) {
+        width: 1110px;
+    }
+}
+.removed {
+    display: none;
+}
+
+@import 'quote';
+@import 'time';
+@import 'info';
 @import 'day';
 @import 'night';

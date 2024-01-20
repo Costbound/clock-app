@@ -8,8 +8,8 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "predeploy" : "npm run build",
-    "deploy" : "gh-pages -d dist"
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "devDependencies": {
     "gh-pages": "^6.1.1",
@@ -17,6 +17,7 @@
     "vite": "^5.0.8"
   },
   "dependencies": {
+    "axios": "^1.6.5",
     "modern-normalize": "^2.0.0",
     "reset-css": "^5.0.2",
     "vite-plugin-full-reload": "^1.1.0",

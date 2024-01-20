@@ -1,0 +1,49 @@
+.section-quote {
+    padding-top: 38px;
+}
+
+.quote__container {
+    display: flex;
+    align-items: flex-start;
+    gap: 17px;
+}
+
+.quote__blockquote {
+    width: 290px;
+    font-size: 12px;
+    line-height: 1.83;
+
+    @media screen and (min-width: 768px) {
+        max-width: 540px;
+        font-size: 18px;
+        line-height: 1.55;
+    }
+}
+
+.quote__para {
+    margin-bottom: 8px;
+    transition: opacity 300ms;
+
+    @media screen and (min-width: 768px) {
+        margin-bottom: 13px;
+    }
+}
+
+.quote__author {
+    font-weight: 700;
+}
+
+.quote__refresh-btn {
+    background-color: transparent;
+}
+
+.refresh-btn__icon {
+    animation: rotate 300ms;
+    animation-iteration-count: 1;
+}
+
+
+@keyframes rotate {
+    from {transform: rotate(0deg);}
+    to {transform: rotate(180deg);}
+}
