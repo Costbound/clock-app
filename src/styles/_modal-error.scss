@@ -1,0 +1,30 @@
+.modal-error {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    padding: 24px;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #464646;
+}
+.error__btn {
+    color: #fff;
+    width: 100px;
+    height: 40px;
+    border: 1px solid #fff;
+    border-radius: 28px;
+    background-color: rgba(70, 70, 70, 0.6);
+    transition: color 250ms, border-color 250ms;
+}
+.error__btn:hover, .error__btn:focus {
+    color: #b6b6b6;
+    border-color: #b6b6b6;
+}
+.error__para {
+    text-align: center;
+}

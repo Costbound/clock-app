@@ -2,6 +2,8 @@
     padding-bottom: 40px;
     padding-top: 100px;
     margin-top: auto;
+    transition: opacity 1000ms;
+    opacity: 0;
 }
 
 .time__daytime-wrapper {

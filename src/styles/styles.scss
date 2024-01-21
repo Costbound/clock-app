@@ -1,16 +1,24 @@
 @import url('../../node_modules/reset-css/reset.css');
 @import url('../../node_modules/modern-normalize/modern-normalize.css');
+@import 'loader';
+@import 'modal-error';
 
 body {
     font-family: 'Inter';
     font-size: 15px;
     color: #fff;
+    background-color: #464646;
 }
 
 main {
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: rgb(49, 49, 49);
+    transition: opacity 1000ms;
 }
 
 .section {
@@ -38,7 +46,7 @@ button {
         width: 1110px;
     }
 }
-.removed {
+.disabled {
     display: none;
 }
 
