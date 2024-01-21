@@ -10,7 +10,7 @@
   <title>Frontend Mentor | Clock App</title>
   <script type="module" crossorigin src="/clock-app/commonHelpers.js"></script>
   <link rel="modulepreload" crossorigin href="/clock-app/assets/vendor-X9MCInOH.js">
-  <link rel="stylesheet" crossorigin href="/clock-app/assets/index-zU-jS-9U.css">
+  <link rel="stylesheet" crossorigin href="/clock-app/assets/index-W_O429mr.css">
 </head>
 <body>
   <main>
@@ -32,19 +32,19 @@
     <div class="time__container content-container">
         <div class="time__clock__container">
             <div class="time__daytime-wrapper">
-                <svg class="time__sun-icon icon" width="24" height="24">
+                <svg class="time__sun-icon icon disabled" width="24" height="24">
                     <use href="/clock-app/assets/sprite-bjJZV7Xy.svg#icon-sun"></use>
                 </svg>
-                <svg class="time__moon-icon icon removed" width="24" height="24">
+                <svg class="time__moon-icon icon disabled" width="24" height="24">
                     <use href="/clock-app/assets/sprite-bjJZV7Xy.svg#icon-moon"></use>
                 </svg>
-                <p class="time__para">good morning</p>
+                <p class="time__para"></p>
             </div>
             <div class="time__current-time-wrapper">
-                <h1 class="time__current-time-title">11:37</h1>
-                <p class="time__current-time-para">am</p>
+                <h1 class="time__current-time-title"></h1>
+                <p class="time__current-time-para"></p>
             </div>
-            <p class="time__place-para">in london, uk</p>
+            <p class="time__place-para"></p>
         </div>
         <div class="time__more-container">
             <p class="time__more-para">more</p>
@@ -78,6 +78,11 @@
         </ul>
     </div>
 </section>
-  </main>
+  </main>
+  <div class="loader"></div>
+  <div class="modal-error disabled">
+    <p class="error__para">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorum eligendi voluptate molestias pariatur officia dicta maiores, est accusantium totam, id facere deleniti dolor odio corrupti porro facilis quas exercitationem harum?</p>
+    <button class="error__btn button" type="button">Try again</button>
+  </div>
 </body>
 </html>
