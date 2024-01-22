@@ -1,15 +1,5 @@
-import axios from "axios"
-axios.defaults.headers.common["X-Api-Key"] = ""
-
-const delay = (ms) => { return new Promise(resolve => setTimeout(resolve, ms)) }
-
-const blockQuote = document.querySelector(".quote__blockquote")
-const quoteOut = document.querySelector(".quote__para")
-const authorOut = document.querySelector(".quote__author")
-const refreshBtn = document.querySelector(".quote__refresh-btn")
-const refreshIcon = document.querySelector(".refresh-btn__icon");
-refreshQuote()
-
+import { delay } from "./dom-and-common-func"
+import {blockQuote, refreshBtn, refreshIcon, quoteOut, authorOut} from "./dom-and-common-func"
 
 refreshBtn.addEventListener("click", refreshQuote)
 
@@ -31,8 +21,8 @@ async function refreshQuote() {
     clearInterval(iconAnimInterval)
 }
 
-function quoteRequest() {
-    return fetch('https://dummyjson.com/quotes/random')
+async function quoteRequest() {
+    return await fetch('https://dummyjson.com/quotes/random')
         .then(res => {
             if (!res.ok) {
                 throw new Error(res.status)
@@ -64,4 +54,4 @@ async function animateIconOnRefreshing() {
 }
 
 
-export default delay
+export {refreshQuote}

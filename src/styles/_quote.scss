@@ -1,5 +1,16 @@
 .section-quote {
     padding-top: 38px;
+    transition: opacity 700ms;
+    @media screen and (min-width: 768px) and (max-width: 1439px) {
+        padding-top: 80px;
+    }
+    @media screen and (min-width: 1440px) {
+        padding-top: 56px;
+    }
+}
+.section-quote_hidden {
+    position: absolute;
+    opacity: 0;
 }
 
 .quote__container {
@@ -9,12 +20,14 @@
 }
 
 .quote__blockquote {
-    width: 290px;
+    min-width: 290px;
+    max-width: 500px;
     font-size: 12px;
     line-height: 1.83;
     transition: opacity 700ms;
 
     @media screen and (min-width: 768px) {
+        min-width: 540px;
         max-width: 540px;
         font-size: 18px;
         line-height: 1.55;
@@ -36,13 +49,16 @@
 .quote__refresh-btn {
     background-color: transparent;
 }
-
-.refresh-btn__icon {
-    transition: transform 300ms;
+.quote__refresh-btn:hover,
+.quote__refresh-btn:focus {
+    .refresh-btn__icon {
+        opacity: 1;
+    }
 }
 
-
-@keyframes rotate {
-    from {transform: rotate(0deg);}
-    to {transform: rotate(180deg);}
+.refresh-btn__icon {
+    opacity: 0.5;
+    transition: 
+        transform 300ms,
+        opacity 300ms;
 }

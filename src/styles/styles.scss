@@ -23,6 +23,12 @@ main {
 
 .section {
     padding: 0 26px;
+    @media screen and (min-width:768px) and (max-width: 1439px) {
+        padding: 0 64px;
+    }
+    @media screen and (min-width:1440px) {
+        padding: 0 165px;
+    }
 }
 
 button {
@@ -34,17 +40,7 @@ button {
 }
 
 .content-container {
-    margin: 0 auto;
-    min-width: 324px;
-
-    @media screen and (min-width: 768px) and (max-width: 1440px) {
-        min-width: 686px;
-        max-width: 980px;
-    }
-
-    @media screen and (min-width: 1440px) {
-        width: 1110px;
-    }
+    margin: 0;
 }
 .disabled {
     display: none;
