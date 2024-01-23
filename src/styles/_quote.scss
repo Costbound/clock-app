@@ -20,12 +20,13 @@
 }
 
 .quote__blockquote {
-    min-width: 290px;
-    max-width: 500px;
-    font-size: 12px;
-    line-height: 1.83;
     transition: opacity 700ms;
-
+    @media screen and (max-width: 767px) {
+        min-width: 290px;
+        max-width: 500px;
+        font-size: 12px;
+        line-height: 1.83;
+    }
     @media screen and (min-width: 768px) {
         min-width: 540px;
         max-width: 540px;
@@ -35,8 +36,9 @@
 }
 
 .quote__para {
-    margin-bottom: 8px;
-
+    @media screen and (max-width: 767px) {
+        margin-bottom: 8px;
+    }
     @media screen and (min-width: 768px) {
         margin-bottom: 13px;
     }

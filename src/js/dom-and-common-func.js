@@ -21,6 +21,7 @@ const domElements = {
     clockOut: document.querySelector(".time__current-time-title"),
     timezoneAbrOut: document.querySelector(".time__current-time-para"),
     locationOut: document.querySelector(".time__place-para"),
+    moreOut: document.querySelector(".time__more-para"),
     moreBtn: document.querySelector(".time__more-btn"),
     moreBtnIcon: document.querySelector(".more-btn__down-icon"),
     // Info
@@ -52,6 +53,7 @@ export const {
     clockOut,
     timezoneAbrOut,
     locationOut,
+    moreOut,
     moreBtn,
     moreBtnIcon,
     infoSection,

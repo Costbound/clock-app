@@ -1,11 +1,15 @@
 .main_night {
-    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(../img/tablet/bg-image-nighttime.jpg);
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(../img/mobile/bg-image-nighttime.jpg);
 
         @media screen and (min-width: 768px) {
-            background-image: linear-gradient(to bottom, rgba(46, 47, 66, 0.4), rgba(46, 47, 66, 0.4)), url(../img/desktop/bg-image-nighttime.jpg);
+            background-image: linear-gradient(to bottom, rgba(46, 47, 66, 0.4), rgba(46, 47, 66, 0.4)), url(../img/desctop-tablet/bg-desc-tab-night.jpg);
         }
 }
 
 .section-info_night {
-    background-color: rgba(0, 0, 0, 0.6);;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    .info__split-line {
+        background-color: #fff;
+    }
 }
