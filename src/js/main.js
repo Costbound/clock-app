@@ -20,10 +20,11 @@ moreBtn.addEventListener("click", openInfo)
 // Fetch, check, and start build function
 async function fetchAllData() {
   errWindow.classList.add("disabled")
+  await delay(300)
   const dataFromIp = await fetchIpData()
-  const timeData = await fetchTimeData()
-  timeData.countryCode = dataFromIp.country
-  if (timeData) {
+  const timeData = await fetchTimeData(dataFromIp)
+  if (dataFromIp && timeData) {
+    timeData.countryCode = dataFromIp.country
     buildAll(timeData)
   } else {
     errWindow.classList.remove("disabled")
@@ -32,29 +33,38 @@ async function fetchAllData() {
 
 // Fetch IP data
 async function fetchIpData() {
-  return await fetch('https://api.country.is')
-    .then(response => response.json())
+  return await fetch('https://api.country.is/')
+    .then(res => {
+      if (!res.ok) throw new Error(res.status)
+      return res.json()
+    })
     .then(data => {
-      console.log("IP API:", data)
       sessionStorage.setItem("ip", data.ip)
       return data
     })
-      .catch(error => console.log("IP API: ", error));
+    .catch(err => {
+      console.log("IP API: ", err)
+      errOut.textContent = `Fail to get your IP (${err}). Please try again!`
+    });
 }
 
 
 // Fetch Timezone data
-async function fetchTimeData() {
-  return await fetch(`https://worldtimeapi.org/api/ip/${sessionStorage.getItem("ip")}`)
-      .then(res => res.json())
-    .then(data => {
-      console.log("World Time API:", data)
-      return data
+async function fetchTimeData(ipFetchFeedback) {
+  if (ipFetchFeedback) {
+    return await fetch(`https://worldtimeapi.org/api/ip/${sessionStorage.getItem("ip")}`)
+      .then(res => {
+        if (!res.ok) throw new Error(res.status)
+        return res.json()
+      })
+      .then(data => {
+        return data
       })
       .catch(err => {
         console.log("World Time API: ", err)
-        errOut.textContent = `Fail to get your data (${err}). Please try again!`
+        errOut.textContent = `Fail to get time zone data from your IP (${err}). Please try again!`
       })
+  }
 }
 
 
@@ -62,14 +72,15 @@ async function fetchTimeData() {
 
 // General build
 function buildAll({ datetime, timezone, abbreviation, countryCode, day_of_year, day_of_week, week_number }) {
-  const fullTime = datetime.slice(datetime.indexOf("T") + 1, datetime.indexOf("T") + 9)
-  const time = fullTime.slice(0, -3)
-  const hours = Number(time.slice(0, 2))
-  const seconds = fullTime.slice(-2)
+  const {time, hours, seconds} = calcDateTime(datetime)
 
   buildQuoteSection()
   buildTimeSection(time, hours, timezone, abbreviation, countryCode)
   buildInfoSection(timezone, day_of_year, day_of_week, week_number)
+
+// Start time update cicle
+  setTimeout(updateTime, (60 - seconds) * 1000)
+
 
   // Check bg image to avoid remove loader before bg loaded
   const bgImg = new Image()
@@ -82,39 +93,36 @@ function buildAll({ datetime, timezone, abbreviation, countryCode, day_of_year, 
   }
   
   bgImg.onload = async () => {
-    console.log("BG Image: ", "loaded")
     unHideMain()
   }
   bgImg.onerror = async () => {
-    console.log("BG Image: ", "error")
     unHideMain()
   }
-
-  // Update time
-  setTimeout(() => {
-    updateTime()
-    setInterval(updateTime, 60000)
-  }, (60 - seconds) * 1000)
 }
 
 // Time Section
 function buildTimeSection(time, hours, timezone, abbreviation, countryCode) {
+  const buildDayOrNight = (dayTime) => {
+    if (dayTime === "day") {
+      main.classList.add("main_day")
+      infoSection.classList.add("section-info_day")
+      sunIcon.classList.remove("disabled")
+    } else {
+      main.classList.add("main_night")
+      infoSection.classList.add("section-info_night")
+      moonIcon.classList.remove("disabled")
+    }
+  }
 
   if (hours >= 5 && hours < 12) {
     greetingOut.textContent = "good morning"
-    main.classList.add("main_day")
-    infoSection.classList.add("section-info_day")
-    sunIcon.classList.remove("disabled")
+    buildDayOrNight("day")
   } else if (hours >= 12 && hours < 18) {
     greetingOut.textContent = "good afternoon"
-    main.classList.add("main_day")
-    infoSection.classList.add("section-info_day")
-    sunIcon.classList.remove("disabled")
+    buildDayOrNight("day")
   } else {
-    main.classList.add("main_night")
-    infoSection.classList.add("section-info_night")
     greetingOut.textContent = "good evening"
-    moonIcon.classList.remove("disabled")
+    buildDayOrNight("night")
   }
   if (window.innerWidth > 767) greetingOut.textContent += ", it's currently"
 
@@ -137,7 +145,6 @@ function buildInfoSection(timezone, dayOfYear, dayOfWeek, weekNumber) {
 async function unHideMain() {
   main.classList.remove("disabled")
   await delay(50)
-  timeSection.style.opacity = "1"
   main.style.opacity = ""
   loader.classList.add("disabled")
 }
@@ -170,9 +177,21 @@ async function closeInfo() {
 
 // Update time
 async function updateTime() {
-  const timeData = await fetchTimeData()
-  const {datetime, timezone, day_of_year, day_of_week, week_number} = timeData
-  const time = datetime.slice(datetime.indexOf("T") + 1, datetime.indexOf("T") + 6)
+  const timeData = await fetchTimeData(1)
+  const { datetime, timezone, day_of_year, day_of_week, week_number } = timeData
+  const {time, seconds} = calcDateTime(datetime)
+
+  setTimeout(updateTime, (60 - seconds) * 1000)
   clockOut.textContent = time
   buildInfoSection(timezone, day_of_year, day_of_week, week_number)
+}
+
+
+
+function calcDateTime(datetime) {
+  const fullTime = datetime.slice(datetime.indexOf("T") + 1, datetime.indexOf("T") + 9)
+  const time = fullTime.slice(0, -3)
+  const hours = Number(time.slice(0, 2))
+  const seconds = fullTime.slice(-2)
+  return {time, hours, seconds}
 }

@@ -24,13 +24,10 @@ async function refreshQuote() {
 async function quoteRequest() {
     return await fetch('https://dummyjson.com/quotes/random')
         .then(res => {
-            if (!res.ok) {
-                throw new Error(res.status)
-            }
+            if (!res.ok) throw new Error(res.status)
             return res.json()
         })
         .then(data => {
-            console.log("Quote API: ", data)
             return data
         })
         .catch(err => {
