@@ -33,7 +33,7 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
+- Solution URL: [https://www.frontendmentor.io/solutions/timezone-application-js-scss-vite-LXPDSV4-Em]
 - Live Site URL: [https://costbound.github.io/clock-app/]
 
 ## My process

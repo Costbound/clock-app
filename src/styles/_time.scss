@@ -55,9 +55,9 @@
 .time__current-time-wrapper {
     display: flex;
     align-items: flex-end;
+    margin-bottom: 16px;
     @media screen and (max-width: 767px) {
         gap: 5px;
-        margin-bottom: 16px;
     }
     @media screen and (min-width: 768px) {
         gap: 11px;
