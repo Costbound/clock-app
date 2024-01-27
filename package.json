@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://Costbound.github.io/clock-app/",
+  "homepage": "https://costbound.github.io/clock-app/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
